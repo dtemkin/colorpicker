@@ -28,8 +28,4 @@ setup(
     install_requires=[
         'PySide',
     ],
-    entry_points="""
-        [console_scripts]
-        colorpicker = colorpicker:main
-    """,
 )
