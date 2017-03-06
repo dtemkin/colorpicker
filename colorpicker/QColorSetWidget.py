@@ -129,9 +129,9 @@ class QColorSetWidget(QWidget):
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(332, 82)
+        # Dialog.resize(332, 82)
         self.layoutWidget = QWidget(Dialog)
-        self.layoutWidget.setGeometry(QRect(10, 10, 321, 74))
+        # self.layoutWidget.setGeometry(QRect(10, 10, 321, 74))
         self.layoutWidget.setObjectName("layoutWidget")
         self.gridLayout = QGridLayout(self.layoutWidget)
         self.gridLayout.setContentsMargins(0, 0, 0, 0)
@@ -189,3 +189,5 @@ class Ui_Dialog(object):
         Dialog.setTabOrder(self.spinBox_Red, self.spinBox_Green)
         Dialog.setTabOrder(self.spinBox_Green, self.spinBox_Blue)
         Dialog.setTabOrder(self.spinBox_Blue, self.spinBox_Alpha)
+
+        Dialog.resize(200, 70)
