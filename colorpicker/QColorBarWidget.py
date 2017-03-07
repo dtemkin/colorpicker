@@ -118,7 +118,7 @@ class QColorBarWidget(QGraphicsView):
         return (self.color)
 
     def setColor(self, color):
-        self.color = color
+        self.color = QColor(color)
         if self.type == BAR_TYPE_HUE:
             self.px = color.hue() * self.width / 360
         elif self.type == BAR_TYPE_SATURATION:

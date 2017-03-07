@@ -187,7 +187,7 @@ class QHueCircleWidget(QGraphicsView):
         return(self.color)
 
     def setColor(self, color):
-        self.color = color
+        self.color = QColor(color)
         if self.rectF == None:
             self.sv_x = 0
             self.sv_y = 0

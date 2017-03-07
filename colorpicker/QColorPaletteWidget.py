@@ -64,7 +64,7 @@ class QColorPaletteWidget(QGraphicsView):
         painter.restore()
 
     def setColor(self, color):
-        self.color = color
+        self.color = QColor(color)
 
     def getColor(self):
         return(self.color)

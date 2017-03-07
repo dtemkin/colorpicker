@@ -121,7 +121,7 @@ class QColorSetWidget(QWidget):
         return(self.color)
 
     def setColor(self, color):
-        self.color = color
+        self.color = QColor(color)
         self.colorToSpinbox_rgb()
         self.colorToSpinbox_hsv()
         self.ui.spinBox_Alpha.setValue(self.color.alpha())
