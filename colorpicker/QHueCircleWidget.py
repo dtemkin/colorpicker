@@ -25,6 +25,7 @@ class QHueCircleWidget(QGraphicsView):
         self.color = QColor()
         self.color.setHsv(0, 255, 255, 255)
         self.setColor(self.color)
+        self.bg_brush = QBrush(self.create_bg_pixmap())
 
         self.setFixedSize(200,200)
         self.setSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
@@ -45,13 +46,17 @@ class QHueCircleWidget(QGraphicsView):
         self.rectToParam()
         painter.setPen(QPen(Qt.black, 1))
         # draw select color
+        painter.setBrush(self.bg_brush)
+        painter.drawEllipse(-self.half_width, -self.half_height, self.width / 8, self.height / 8)
         painter.setBrush(self.color)
         painter.drawEllipse(-self.half_width, -self.half_height, self.width / 8, self.height / 8)
         # hue color circle
+        painter.setBrush(self.bg_brush)
+        painter.drawEllipse(0 - self.half_width, 0 - self.half_height, self.width, self.height)
         color = QColor()
         gradient = QConicalGradient(0, 0, 0)
         for _ in range(11):
-            color.setHsv((10 - _) * 36, 255, 255, 255)
+            color.setHsv((10 - _) * 36, 255, 255, self.color.alpha())
             gradient.setColorAt(0.1 * _, color)
         painter.setBrush(gradient)
         painter.drawEllipse(0 - self.half_width, 0 - self.half_height, self.width, self.height)
@@ -213,6 +218,28 @@ class QHueCircleWidget(QGraphicsView):
         self.height = rect.toRect().height()
         self.half_height = self.height / 2
         self.quarter_height = self.height / 4
+
+    @staticmethod
+    def create_bg_pixmap(color1=None, color2=None):
+        """
+        :rtype: QPixmap
+        """
+        pixmap = QPixmap(QSize(16, 16))
+        color1 = color1 or QColor(128, 128, 128)
+        color2 = color2 or QColor(168, 168, 168)
+
+        painter = QPainter(pixmap)
+        painter.save()
+        brush1 = QBrush(color1)
+        brush2 = QBrush(color2)
+        painter.fillRect(0, 0, 8, 8, brush1)
+        painter.fillRect(8, 8, 8, 8, brush1)
+        painter.fillRect(8, 0, 8, 8, brush2)
+        painter.fillRect(0, 8, 8, 8, brush2)
+        painter.restore()
+        painter.end()
+
+        return pixmap
 
     def sizeHint(self):
         return QSize(200, 200)
