@@ -159,7 +159,7 @@ class QHueCircleWidget(QGraphicsView):
             self.color.hue(),
             col_sat,
             col_val,
-            255
+            self.color.alpha()
         )
         self.sv_x = x - self.half_width
         self.sv_y = y - self.half_height
