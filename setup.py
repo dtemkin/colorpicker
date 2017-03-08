@@ -7,7 +7,7 @@ from colorpicker import __author__, __version__, __license__
 
 setup(
     name='colorpicker',
-    version='1.0',
+    version='1.1',
     py_modules=['colorpicker'],
     description='Color Picker Widget',
     author='tokyo-noctambulist',

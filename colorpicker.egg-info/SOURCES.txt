@@ -1,6 +1,7 @@
 README
 setup.py
 colorpicker/QColorBarWidget.py
+colorpicker/QColorPaletteWidget.py
 colorpicker/QColorSetWidget.py
 colorpicker/QHueCircleWidget.py
 colorpicker/__init__.py
